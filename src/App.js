@@ -1,24 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import Navbar from './Layout/Navbar';
+import Home from './Pages/Home';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import AddEmployee from './Employees/AddEmployee';
+ import EditEmployee from './Employees/EditEmployee';
+ import UpdateEmployee from './Employees/UpdateEmployee';
+import ViewEmployee from './Employees/ViewEmployee';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div>
+    <Router>
+   <Navbar></Navbar>
+   <Routes>
+      <Route exact path = "/" element={<Home/>} />
+      <Route exact path = "/addEmployee" element={<AddEmployee/>} />
+      <Route exact path='/updateRecord/:employeeId' element={EditEmployee}/>
+      <Route exact path='updateEmployee/:employeeId' element={<UpdateEmployee/>} />
+      <Route exact path='viewEmployee/:employeeId' element={<ViewEmployee/>} />
+      {/* <Route path = "/editEmployee/:employeeId" element={<EditEmployee/>} /> */}
+   </Routes>
+   </Router>
+   </div>
   );
 }
 
